@@ -14,6 +14,7 @@ object Form3: TForm3
   Font.Height = -18
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClick = labelDiaeresisClick
   OnCreate = FormCreate
   PixelsPerInch = 144
   TextHeight = 25
@@ -33,6 +34,7 @@ object Form3: TForm3
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    OnClick = labelDiaeresisClick
   end
   object labelDiaeresis: TLabel
     Left = 170
@@ -50,6 +52,7 @@ object Form3: TForm3
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    OnClick = labelDiaeresisClick
   end
   object labelExtendedLen: TLabel
     Left = 90
@@ -121,6 +124,7 @@ object Form3: TForm3
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    OnClick = labelDiaeresisClick
   end
   object labelAsciiLen: TLabel
     Left = 90
@@ -551,6 +555,17 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
   end
+  object Label16: TLabel
+    Left = 351
+    Top = 695
+    Width = 185
+    Height = 25
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    Caption = #39'='#39' equals  |  '#39'!'#39' different'
+  end
   object lbAscii: TListBox
     Left = 612
     Top = 60
@@ -607,9 +622,9 @@ object Form3: TForm3
   end
   object ListBoxTCompareOption: TListBox
     Left = 611
-    Top = 444
+    Top = 420
     Width = 240
-    Height = 314
+    Height = 338
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5

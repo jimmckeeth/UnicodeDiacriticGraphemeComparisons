@@ -43,7 +43,9 @@ type
     Label14: TLabel;
     ListBoxTCompareOption: TListBox;
     Label15: TLabel;
+    Label16: TLabel;
     procedure FormCreate(Sender: TObject);
+    procedure labelDiaeresisClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +80,8 @@ begin
   AListBox.Clear;
   var LUnicode : ISkUnicode := TSkUnicode.Create;
   for var LGrapheme in LUnicode.GetBreaks(AText, TSkBreakType.Graphemes) do
-    AListBox.items.Add(Format('%s[%d] = %s', [LGrapheme, Length(LGrapheme), StringHexadecimal(LGrapheme)]));
+    AListBox.items.Add(Format('%s[%d] = %s',
+      [LGrapheme, Length(LGrapheme), StringHexadecimal(LGrapheme)]));
 end;
 
 function EqualChar(comp: Integer): Char;
@@ -89,11 +92,10 @@ begin
     Result := '!';
 end;
 
-function FullComparison(S1,S2: String): String;
+function FullComparison(const S1,S2: String): String;
 begin
   Result := EqualChar(string.CompareText(S1, S2)) +
     EqualChar(System.SysUtils.StrComp(Pchar(S1),Pchar(S2)))+
-    //EqualChar(S1.CompareTo(S2))+
     EqualChar(string.Compare(S1, S2));
   for var co := coLingIgnoreCase to coStringSort do
     Result := Result + EqualChar(string.Compare(s1,s2,[co]));
@@ -136,6 +138,11 @@ begin
   for var co := coLingIgnoreCase to coStringSort do
     ListBoxTCompareOption.Items.Add(format('%d [%s]',
       [ord(co), GetEnumName(TypeInfo(TCompareOption), Ord(co))]));
+end;
+
+procedure TForm3.labelDiaeresisClick(Sender: TObject);
+begin
+  Clipboard.AsText := (Sender as TLabel).Caption;
 end;
 
 end.
